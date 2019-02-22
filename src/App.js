@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TabContent from './components/Tabs/TabContent';
 
 class App extends Component {
   render() {
+
+    const options = [
+
+      { label: 'Hesham', value: 'hesham' },
+      { label: 'Khaled', value: 'khaled' },
+      { label: 'Gomaa', value: 'gomaa' },
+      { label: 'Mostafa', value: 'mostafa' },
+      { label: 'Helmy', value: 'helmy' },
+
+    ];
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <TabContent />
+      </>
     );
   }
 }
