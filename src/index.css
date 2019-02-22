@@ -12,3 +12,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* Side bar  */
+.sidebar-sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 40% ; 
+
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+/* user table  */
+.user-table{
+   margin-top: 6%  ;
+}
