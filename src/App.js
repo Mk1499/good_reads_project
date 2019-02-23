@@ -4,6 +4,7 @@ import { Router } from '@reach/router';
 import Admin from './components/Admin/Admin';
 import UserHomePage from './components/UserHomePage/userHomePage';
 import Home from './components/Home/home';
+import CategoriesPage from './components/Categories/CategoriesPage';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Home path="/" />
         <Admin path="/admin" />
         <UserHomePage path="/user" />
+        <CategoriesPage path="/categories" />
       </Router>
     );
   }

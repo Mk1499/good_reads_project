@@ -324,3 +324,18 @@ ul.pagination {
   .img{
     float: left;
   }
+
+  .card-container {
+    height: 100px;
+    width: 23%;
+    margin: auto 20px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+   
+  }
+
+  .categories_container{
+    margin-top: 6%;
+
+  }
