@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import CategoryCard from './CategoryCard';
+import BookCard from './BookCard';
 
-export default class Categories extends Component {
+export default class CategoryBooks extends Component {
 
     render() {
         return (
             <div className="cards_container">
                 {
-                this.props.categories.map((category) => {
+                this.props.books.map((book) => {
                     return (
-                        <CategoryCard category_name={category} />
+                        <BookCard book_name={book.name} author_name={book.author} />
                     );
                 })
             }
