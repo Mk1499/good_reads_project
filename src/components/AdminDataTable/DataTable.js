@@ -49,7 +49,7 @@ export default class DataTable extends React.Component {
   };
 
   render() {
-    const { headings, rows } = this.props;
+    const { headings , rows} = this.props;
 
     this.renderHeadingRow = this.renderHeadingRow.bind(this);
     this.renderRow = this.renderRow.bind(this);

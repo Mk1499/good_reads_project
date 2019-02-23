@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import TabContent from './components/Tabs/TabContent';
+import { Router } from '@reach/router';
+import Admin from './components/Admin/Admin';
 
 class App extends Component {
   render() {
-
-    const options = [
-
-      { label: 'Hesham', value: 'hesham' },
-      { label: 'Khaled', value: 'khaled' },
-      { label: 'Gomaa', value: 'gomaa' },
-      { label: 'Mostafa', value: 'mostafa' },
-      { label: 'Helmy', value: 'helmy' },
-
-    ];
-
     return (
-      <>
-        <TabContent />
-      </>
+        <Router>
+          <Admin path="/admin" />
+
+        </Router>
     );
   }
 }
