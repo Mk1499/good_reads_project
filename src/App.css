@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  color: #3a4660;
+  background-color: #3a4660;
 }
 
 .App-logo {
@@ -84,3 +87,240 @@ ul.pagination {
   ul.pagination a.page-link:hover {
     background-color: #f4f4f4; 
    }
+
+   .AppAside {
+    width: 50%;
+    background-color: #c9af98;
+  }
+  
+  .AppForm {
+    width: 50%;
+    background-color: #3a4660;
+    padding: 25px 40px;
+    overflow: auto;
+  }
+  
+  .switch {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10%;
+  }
+  
+  .switcherItem {
+    background-color: #3a4660;
+    color: #9DA6B1;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: .9em;
+    border: none;
+    outline: none;
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  .switch--Active {
+    background-color: #c9af98;
+    color: white;
+  }
+  
+  .switcherItem:first-child {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+  .switcherItem:last-child {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+  
+  .switch_title {
+    color: #707C8B;
+    font-weight: 300;
+    margin-bottom: 50px;
+  }
+  
+  .switch_title_item {
+    color: #707C8B;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.7em;
+    margin: 0 10px;
+    padding-bottom: 5px;
+  }
+  
+  .switch_title_item:first-child {
+    margin-left: 0;
+  }
+  
+  .switch_title--Active {
+    color: white;
+    border-bottom: 1px solid #c9af98;
+  }
+  
+  .FormCenter {
+    margin-bottom: 100px;
+    transition: 0.6s ease;
+  }
+  
+  .Field {
+    margin-bottom: 40px;
+  }
+  
+  .Label {
+    display: block;
+    text-transform: uppercase;
+    font-size: .9em;
+    color: white;
+  }
+  .Input {
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    border-bottom: 1px solid #445366;
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 10px;
+    margin-top: 10px;
+  }
+  
+  .Input::placeholder {
+    color: #616E7F;
+  }
+  
+  .fieldButton {
+    background-color: #c9af98;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    padding: 15px 70px;
+    font-size: .8em;
+    font-weight: 500;
+    transition: 0.6s ease;
+  
+  }
+  
+  .link {
+    color: rgb(161, 186, 218);
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1.5px solid #c9af98;
+    padding-bottom: 5px;
+    margin-left: 8px;
+  }
+  .typeAnime{
+    font-size: 400%;
+    text-align: center;
+    margin: 8%;
+    text-shadow: 2px 2px 8px #707C8B;
+  
+  }
+  
+  .LeftSide{
+    padding: 1%;
+  }
+  
+  
+  .menu {
+    font-family: sans-serif;
+    background-color: #3a4660;
+    color: #3a4660;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .menu-item {
+    border-bottom: 1px solid #ddd;
+    background-color: #3a4660;
+    height: 100%;
+  }
+  
+  .menu-item a {
+    display: block;
+    padding-left: 15%;
+    padding-top: 20%;
+    color: #c9af98;
+    text-decoration: none;
+    font-size: 200%;
+  }
+  
+  .menu-item a:hover {
+    color: #707C8B;
+    text-decoration-color: #707C8B;
+    /* background-color: #c9af98; */
+  }
+  
+  .menu-item a:focus {
+    text-decoration-color: #3a4660;
+    /* text-decoration: none; */
+  }
+  
+  .menu-item a:visited {
+    /* color: #c9af98; */
+    text-decoration-color: #3a4660;
+  }
+  
+  .active-menu-item {
+    background-color: #3a4660;
+  }
+  
+  .hint {
+    padding: .5rem 15px;
+  }
+  
+  .rated{
+    padding-left: 10%;
+    padding-top: 10%;
+  }
+  .rated {
+    max-width: 100%;
+    /* position: relative; */
+    margin: auto;
+    /* text-align: center; */
+  }
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 1%;
+    /* margin-top: -22px; */
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
+    transition: 0.6s ease; 
+    background-color: #3a4660;
+    border: none ;
+    user-select: none;
+  }
+  .next {
+    right: 51%;
+  }
+  .prev {
+    left: 1%;
+  }
+  .prev:hover, .next:hover {
+    background-color: #c9af98;
+  }
+  .bookslide{
+    padding-left: 15%;
+  }
+  
+  .title{
+    text-transform: uppercase;
+    font-size: 300%;
+    padding-left: 18%;
+  }
+  
+  .bookName{
+    font-size: 200%;
+    color: #3a4660;
+  }
+  .authorName{
+    font-size: 140%;
+    color: #707C8B;
+  }
+  .img{
+    float: left;
+  }
