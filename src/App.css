@@ -345,3 +345,14 @@ ul.pagination {
   .cards_container{
     margin-top: 6%;
   }
+
+  .tab-content{
+    margin-left: 3%;
+    margin-right: 3%;
+    
+  }
+
+  .up{
+    margin-top: 0px;
+    padding: 50px;
+  }
