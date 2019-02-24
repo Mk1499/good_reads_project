@@ -365,3 +365,13 @@ display: block;
 line-height: 1.428571429;
 color: #999;
 }
+  .tab-content{
+    margin-left: 3%;
+    margin-right: 3%;
+    
+  }
+
+  .up{
+    margin-top: 0px;
+    padding: 50px;
+  }

@@ -144,7 +144,7 @@ export default class TabContent extends Component {
         const totalCategoryRows = categoryRows.length;
         const totalAuthorRows = authorRows.length;
         return (
-            <div className="container up">
+            <div className="up">
 
                 <TabList>
 
