@@ -6,8 +6,19 @@ import UserHomePage from './components/UserHomePage/userHomePage';
 import Home from './components/Home/home';
 import CategoriesPage from './components/Categories/CategoriesPage';
 import CategoryBooksPage from './components/CategoryBooks/CategoryBooksPage';
+ 
+import AuthorProfile from './components/Author/AuthorProfile' ; 
+
+
+const AppContext = React.createContext("data") ; 
 
 class App extends Component {
+
+
+
+
+
+
   render() {
     return (
       <Router>
@@ -16,6 +27,8 @@ class App extends Component {
         <UserHomePage path="/user" />
         <CategoriesPage path="/categories" />
         <CategoryBooksPage path="/categories/cbooks" />
+     
+        <AuthorProfile path="/author" /> 
       </Router>
     );
   }
