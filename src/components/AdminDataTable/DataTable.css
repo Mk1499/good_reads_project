@@ -8,6 +8,7 @@
 .DataTable {
   position: relative;
   max-width: 100vw;
+  clear:both;
 }
 
 .Cell {

@@ -3,7 +3,6 @@ import TabList from './TabList';
 import DataTable from '../AdminDataTable/DataTable';
 import AddButton from '../AddButton/AddButton';
 import Pagination from '../Pagination/Pagination';
-import '../../App.css';
 
 export default class TabContent extends Component {
 
@@ -85,7 +84,7 @@ export default class TabContent extends Component {
         const offset = (currentPage - 1) * pageLimit;
         const currentBookRows = bookRows.slice(offset, offset + pageLimit);
         this.setState({currentBookRows});
-        this.render();
+        
       }
 
       onCategoriesPageChanged = data => {
@@ -95,7 +94,7 @@ export default class TabContent extends Component {
         const offset = (currentPage - 1) * pageLimit;
         const currentCategoryRows = categoryRows.slice(offset, offset + pageLimit);
         this.setState({currentCategoryRows});
-        this.render();
+        
       }
 
       onAuthorsPageChanged = data => {
@@ -105,7 +104,7 @@ export default class TabContent extends Component {
         const offset = (currentPage - 1) * pageLimit;
         const currentRows = AuthorRows.slice(offset, offset + pageLimit);
         this.setState({currentRows});
-        this.render();
+        
       }
 
     render() {
@@ -145,7 +144,7 @@ export default class TabContent extends Component {
         const totalCategoryRows = categoryRows.length;
         const totalAuthorRows = authorRows.length;
         return (
-            <div className="container up">
+            <div className="up">
 
                 <TabList>
 
