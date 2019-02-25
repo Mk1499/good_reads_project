@@ -11,15 +11,16 @@ class BookID extends Component {
   constructor(props) {
     super();
     this.state = {
-      book: { bookId: 1, 
-      name: "Life Of PI", 
-      author: "Yann Martel", 
-      avgRating: 4, 
-      rating: 4, 
-      shelve: "read",
-      description: "This is a modified jumbotron that occupies the entire horizontal space of its parent  This is a modified jumbotron that occupies the entire horizontal space of its parent",
-      rateNumber: 350
-    }
+      book: {
+        bookId: 1,
+        name: "Life Of PI",
+        author: "Yann Martel",
+        avgRating: 4,
+        rating: 4,
+        shelve: "read",
+        description: "This is a modified jumbotron that occupies the entire horizontal space of its parent  This is a modified jumbotron that occupies the entire horizontal space of its parent",
+        rateNumber: 350
+      }
 
     }
   }

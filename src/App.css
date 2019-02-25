@@ -404,3 +404,8 @@ color: #999;
     margin-top: 0px;
     padding: 50px;
   }
+  .errorMsg {
+    color: #cc0000;
+    margin-bottom: 12px;
+  }
+  
