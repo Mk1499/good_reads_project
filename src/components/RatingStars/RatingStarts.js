@@ -17,8 +17,6 @@ export default class RatingStars extends Component {
     }
     
     
-  
-
     handelStarClicked = (e) =>{
         
         for(let i=1;i<=5;i++){

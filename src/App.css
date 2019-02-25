@@ -79,7 +79,7 @@ ul.pagination {
     text-align: center;
     box-shadow: none !important;
     border-color: #ced4da !important;
-    color: #6b88a4;
+    color: #d3d6da;
     font-weight: 900;
     font-size: 1rem; 
   }
@@ -319,8 +319,35 @@ ul.pagination {
   }
   .authorName{
     font-size: 140%;
-    color: #707C8B;
+    color: #e4e9f0;
   }
-  .img{
-    float: left;
+ 
+  .Book_container{
+    margin-top: 6%;
+    height: -webkit-fill-available;
+    border-radius: 20px;
+    border-style: groove;
+    border: 1px
   }
+.Book_Img_Card{
+  width: 90%;
+}
+/*
+.Book_Card_Rate{
+  display: inline;
+  
+} */
+.book-description{
+  padding-left: 2%;
+  overflow: hidden;
+}
+
+.Card{
+  /* width: 20%; */
+  float: left;
+}
+/* @media only screen and (max-width: 600px) {
+  .Card{
+    width: 95%;
+  }
+} */
