@@ -7,12 +7,12 @@ import "semantic-ui-css/semantic.min.css";
 import Home from './components/Home/home';
 import CategoriesPage from './components/Categories/CategoriesPage';
 import CategoryBooksPage from './components/CategoryBooks/CategoryBooksPage';
- 
 import AuthorProfile from './components/Author/AuthorProfile' ; 
 
  
 // just for test delete when finish
 import BookID from './components/BookID/BookID'; 
+
 
 const AppContext = React.createContext("data") ;
 

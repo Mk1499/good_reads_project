@@ -1,5 +1,4 @@
-const data = {
-    "properties": [
+const bookData = [
     {
         "_id": "593e9297e17df20c4a237d42",
         "index": 0,
@@ -36,6 +35,6 @@ const data = {
         "author": "Colson Whitehead"
     }
     ]
-}
 
-export default data;
+
+export default bookData;

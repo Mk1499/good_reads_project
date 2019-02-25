@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import {
+  PopupboxManager,
+  PopupboxContainer
+} from 'react-popupbox';
 // import './App.css'
 
 class MenuContent extends Component {
@@ -10,6 +14,24 @@ class MenuContent extends Component {
     this.items.push()
   }
 
+  //popup 
+  aboutUs() {
+    const content = (
+     <div><span>ABOUT US about us ABOUT US about us </span></div>
+      )
+    PopupboxManager.open({
+      content,
+      config: {
+        titleBar: {
+          enable: true,
+          text: 'About Us!'
+        },
+        fadeIn: true,
+        fadeInSpeed: 500
+      }
+    })
+  }
+
   render() {
     return (
       <div className="menu">
@@ -18,8 +40,7 @@ class MenuContent extends Component {
             onClick={this.props.closeCallback}> Home </Link>
 
           <Link to="/"
-            onClick={this.props.closeCallback}> About Us </Link>
-
+            onClick={this.aboutUs}> About Us </Link>
            <Link to="/"
             onClick={this.props.closeCallback}> Categories </Link>
 
@@ -30,7 +51,7 @@ class MenuContent extends Component {
             onClick={this.props.closeCallback}> Terms  </Link>
 
         </div>)}
-      </div>
+        </div>
     )
   }
 }
