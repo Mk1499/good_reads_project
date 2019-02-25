@@ -9,7 +9,7 @@ export default class Categories extends Component {
                 {
                 this.props.categories.map((category) => {
                     return (
-                        <CategoryCard category_name={category} />
+                        <CategoryCard category_name={category.name} category_id={category._id} />
                     );
                 })
             }
