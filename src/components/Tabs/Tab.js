@@ -24,12 +24,12 @@ export default class Tab extends Component {
     }
 
     return (
-      <a
+      <div
         className={className}
         onClick={onClick}
       >
         {label}
-      </a>
+      </div>
     );
   }
 }

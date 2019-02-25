@@ -35,13 +35,13 @@ export default class DataTable extends React.Component {
         })}
         <td className="Cell">
 
-          <a href="#">
+          <button>
             <i className="fas fa-pencil-alt"></i>
-          </a>
+          </button>
           &nbsp; &nbsp;&nbsp; &nbsp;
-        <a href="#">
+        <button>
             <i className="fas fa-trash"></i>
-          </a>
+          </button>
         </td>
       </tr>
 

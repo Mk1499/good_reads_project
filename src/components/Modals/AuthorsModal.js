@@ -2,11 +2,43 @@ import React, { Component } from 'react';
 
 export default class AuthorModal extends Component {
 
-handleCloseModal = function () {
+    onSubmit = function (e) {
 
-    document.getElementById("addAuthorModal").style.display = "none";
-    document.getElementById("addAuthorModal").style.opacity = "0";
-}
+        e.preventDefault();
+        let data = new FormData(e.target);
+
+        var result = {};
+
+        for (let entry of data.entries()) {
+            result[entry[0]] = entry[1];
+        }
+
+        console.log(result);
+
+
+        fetch('https://gomaanodejsapp.herokuapp.com/author/add', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                //"Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify(result)
+        }).then(function () {
+            document.getElementById("addAuthorModal").style.display = "none";
+            document.getElementById("addAuthorModal").style.opacity = "0";
+            this.props.history.push('/admin');
+        });
+
+
+    }
+
+
+    handleCloseModal = function () {
+
+        document.getElementById("addAuthorModal").style.display = "none";
+        document.getElementById("addAuthorModal").style.opacity = "0";
+    }
     render() {
         return (
 
@@ -19,14 +51,16 @@ handleCloseModal = function () {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="" method="get">
+                        <form onSubmit={this.onSubmit}>
                             <div className="modal-body">
-                            <table>                          
-                                <tr><td><label>First Name </label></td> <td><input type="textfield" name="first_name" /></td></tr>
-                                <tr><td><label>Last Name </label></td> <td><input type="textfield" name="last_name" /></td></tr>
-                                <tr><td><label>Date of Birth </label></td> <td><input type="date" name="date_of_birth" /></td></tr>
-                                <tr><td><label>Image </label></td> <td><input type="textfield" name="image" /></td></tr>
-                            </table>
+                                <table>
+                                    <tbody>
+                                    <tr><td><label>First_Name</label></td><td><input type="textfield" name="fName" /></td></tr>
+                                    <tr><td><label>Last_Name</label></td><td><input type="textfield" name="lName" /></td></tr>
+                                    <tr><td><label>Date_Of_Birth</label></td><td><input type="date" name="dob" /></td></tr>
+                                    <tr><td><label>Image</label></td><td><input type="textfield" name="bd" /></td></tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div className="modal-footer">
                                 <button type="submit" className="btn btn-primary">Add Author</button>
