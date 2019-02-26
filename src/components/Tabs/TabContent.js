@@ -3,7 +3,6 @@ import TabList from './TabList';
 import DataTable from '../AdminDataTable/DataTable';
 import AddButton from '../AddButton/AddButton';
 import Pagination from '../Pagination/Pagination';
-import { resolve } from 'path';
 
 export default class TabContent extends Component {
 
