@@ -12,6 +12,7 @@ import AuthorProfile from './components/Author/AuthorProfile' ;
  
 // just for test delete when finish
 import BookID from './components/BookID/BookID'; 
+import AllAuthors from './components/Author/AllAuthors';
 
 
 const AppContext = React.createContext("data") ;
@@ -35,6 +36,7 @@ class App extends Component {
         <CategoriesPage path="/categories" />
         <CategoryBooksPage path="/categories/:id" />
         <AuthorProfile path="/author/:id" /> 
+        <AllAuthors path = "/authors" /> 
       </Router>
     );
   }
