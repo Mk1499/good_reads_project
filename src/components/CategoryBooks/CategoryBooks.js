@@ -5,7 +5,7 @@ export default class CategoryBooks extends Component {
 
     render() {
         return (
-            <div className="cards_container">
+            <div>
                 {
                 this.props.books.map((book) => {
                     return (

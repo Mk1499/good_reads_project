@@ -24,15 +24,15 @@ class Pagination extends Component {
 
   constructor(props) {
     super(props);
-    const { totalRecords = null, pageLimit = 30, pageNeighbours = 0 } = props;
+    const { totalRecords = null, pageLimit = 2, pageNeighbours = 1 } = props;
 
-    this.pageLimit = typeof pageLimit === 'number' ? pageLimit : 30;
+    this.pageLimit = typeof pageLimit === 'number' ? pageLimit : 2;
     this.totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
 
     // pageNeighbours can be: 0, 1 or 2
     this.pageNeighbours = typeof pageNeighbours === 'number'
       ? Math.max(0, Math.min(pageNeighbours, 2))
-      : 0;
+      : 1;
 
     this.totalPages = Math.ceil(this.totalRecords / this.pageLimit);
 
