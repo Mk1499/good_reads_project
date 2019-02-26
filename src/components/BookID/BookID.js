@@ -37,8 +37,8 @@ class BookID extends Component {
         book.avgRating = result.bookData.avg_rate;
         book.description = "";
         book.rateNumber = result.bookData.no_of_rates;
+        this.setState({ book });
       });
-    this.setState({ book })
   }
 
 
