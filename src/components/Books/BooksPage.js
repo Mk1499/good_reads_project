@@ -53,7 +53,7 @@ export default class BooksPage extends Component {
                 {
                     (totalBooks > 0) ?
 
-                        <div>
+                        <div style={{marginTop:"6%"}}>
                             <CategoryBooks books={this.state.currentBooks} />
                             <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between text-center">
 
@@ -65,7 +65,7 @@ export default class BooksPage extends Component {
 
                         :
 
-                        <div className="cards_container">
+                        <div style={{marginTop:"5%"}}>
                             <h1>There's no Books</h1>
                         </div>
                 }

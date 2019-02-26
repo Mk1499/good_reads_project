@@ -33,7 +33,7 @@ export default class CategoriesPage extends Component {
 
                         :
 
-                        <div className="cards_container">
+                        <div style={{marginTop:"6%"}}>
                             <h1>There's no Categories</h1>
                         </div>
 
