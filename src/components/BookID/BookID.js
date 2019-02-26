@@ -9,32 +9,37 @@ import Navbar from '../Shared/navbar';
 class BookID extends Component {
 
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       book: {
-        name: "Life Of PI",
-        author: "Yann Martel",
-        avgRating: 4,
-        rating: 4,
+        name: "",
+        author: "",
+        catName: "",
+        avgRating: "",
+        rating: "",
         shelve: "read",
         description: "This is a modified jumbotron that occupies the entire horizontal space of its parent  This is a modified jumbotron that occupies the entire horizontal space of its parent",
-        rateNumber: 350
+        rateNumber: ""
       }
 
     }
   }
 
 
-  // componentDidMount() {
-  //   let book = {};
-  //   fetch(`https://gomaanodejsapp.herokuapp.com/book/${this.props.id}`)
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       book.name = result.book_details.name;
-  //       book.author = result.book_details.auth_id.name;
-        
-  //     });
-  // }
+  componentDidMount() {
+    let book = {};
+    fetch(`https://gomaanodejsapp.herokuapp.com/book/${this.props.id}`)
+      .then(response => response.json())
+      .then(result => {
+        book.name = result.bookData.name;
+        book.author = result.bookData.auth_id.first_name + " "  + result.bookData.auth_id.last_name;
+        book.catName = result.bookData.category_id.name;
+        book.avgRating = result.bookData.avg_rate;
+        book.description = "";
+        book.rateNumber = result.bookData.no_of_rates;
+      });
+    this.setState({ book })
+  }
 
 
   changeRating = (bookId, state) => {
@@ -67,7 +72,7 @@ class BookID extends Component {
                     <DropDown bookId={this.state.bookId} shelveChanged={this.state.eShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
                 <RatingStars bookId={this.state.bookId} clickable={true} rate={this.state.rating} changeRate={this.changeRating} />
-                  `  </span>
+                      `  </span>
                   </div>
                 </div>
               </div>
@@ -76,6 +81,7 @@ class BookID extends Component {
                   <Container fluid>
                     <h1 className="display-3">{this.state.book.name}</h1>
                     <h1 className="display-8" style={{ color: '#445565' }}> By : {this.state.book.author}</h1>
+                    <h1 className="display-9" style={{ color: '#445565' }}> Cat. : {this.state.book.catName}</h1>
                     <p style={{ color: '#445565' }}>   {this.state.book.rateNumber} Rates
           <AvgRating avg={this.state.book.avgRating} clickable={false} bookId={this.state.bookId} /> </p>
                   </Container>
@@ -98,7 +104,7 @@ class BookID extends Component {
         <br></br>
         <br></br>
 
-        <div className="container">
+        {/* <div className="container">
           <div className="row">
             <div className="col-md-10">
 
@@ -137,7 +143,7 @@ class BookID extends Component {
               </Comment.Group>
             </div>
           </div>
-        </div>
+        </div> */}
 
 
       </div>
