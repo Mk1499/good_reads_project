@@ -7,16 +7,26 @@ export default class CategoryBooksPage extends Component {
 
     state = { currentBooks: [], categoryBooks: [] };
 
-    categoryBooks = [{ name: 'book1', author: 'Hesham' },
-    { name: 'book2', author: 'Gomaa' },
-    { name: 'book3', author: 'Mostafa' },
-    { name: 'book4', author: 'Khaled' },
-    { name: 'book5', author: 'Helmy' }];
-
     componentWillMount() {
-        this.setState({ categoryBooks: this.categoryBooks });
-        const currentBooks = this.categoryBooks.slice(0, 3);
-        this.setState({ currentBooks });
+        
+        let url = `https://gomaanodejsapp.herokuapp.com/book/bycategory/${this.props.id}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(result => {
+
+                let categoryBooks= [];
+                for (let book of result.books_category) {
+                    categoryBooks.push({author_id:book.auth_id._id, book_id:book._id, author:book.auth_id.first_name + " " + book.auth_id.last_name, name: book.name});
+                }
+                
+                console.log(categoryBooks);
+                this.setState({ categoryBooks });
+                const currentBooks = this.state.categoryBooks.slice(0, 2);
+                this.setState({ currentBooks });
+
+
+            });
     }
   
     onPageChanged = data => {

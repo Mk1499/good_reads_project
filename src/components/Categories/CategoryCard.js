@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from '@reach/router';
 
 export default class CategoryCard extends Component {
 
@@ -8,13 +9,13 @@ export default class CategoryCard extends Component {
         const link = "/categories/" + this.props.category_id;
 
         return (
-            <a href={link}>
+            <Link to={link}>
             <div className="col-sm-6 col-md-4 card card-container border-gray rounded border mx-2 my-3 d-flex flex-row align-items-center p-0 bg-light">
               
-                   <h5> {this.props.category_name} </h5>
+                   <h3> {this.props.category_name} </h3>
             
             </div>
-            </a>
+            </Link>
         );
 
 

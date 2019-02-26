@@ -31,11 +31,10 @@ class App extends Component {
         <UserHomePage path="/user" />
 
         {/* // just for test delete when finish */}
-         <BookID path="/bookid"/>
+        <BookID path="/book/:id"/>
         <CategoriesPage path="/categories" />
-        <CategoryBooksPage path="/categories/cbooks" />
-        
-        <AuthorProfile path="/author" /> 
+        <CategoryBooksPage path="/categories/:id" />
+        <AuthorProfile path="/author/:id" /> 
       </Router>
     );
   }
