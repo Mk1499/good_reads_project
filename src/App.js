@@ -34,7 +34,7 @@ class App extends Component {
          <BookID path="/bookid"/>
         <CategoriesPage path="/categories" />
         <CategoryBooksPage path="/categories/cbooks" />
-     
+        
         <AuthorProfile path="/author" /> 
       </Router>
     );

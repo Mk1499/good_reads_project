@@ -12,7 +12,6 @@ class BookID extends Component {
     super();
     this.state = {
       book: {
-        bookId: 1,
         name: "Life Of PI",
         author: "Yann Martel",
         avgRating: 4,
@@ -24,6 +23,19 @@ class BookID extends Component {
 
     }
   }
+
+
+  // componentDidMount() {
+  //   let book = {};
+  //   fetch(`https://gomaanodejsapp.herokuapp.com/book/${this.props.id}`)
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       book.name = result.book_details.name;
+  //       book.author = result.book_details.auth_id.name;
+        
+  //     });
+  // }
+
 
   changeRating = (bookId, state) => {
     this.setState({
@@ -55,7 +67,7 @@ class BookID extends Component {
                     <DropDown bookId={this.state.bookId} shelveChanged={this.state.eShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
                 <RatingStars bookId={this.state.bookId} clickable={true} rate={this.state.rating} changeRate={this.changeRating} />
-                    </span>
+                  `  </span>
                   </div>
                 </div>
               </div>

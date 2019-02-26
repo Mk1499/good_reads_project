@@ -34,6 +34,17 @@ class Navbar extends Component {
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+
+    <div class="pull-right">
+                <ul class="nav pull-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="divider"></li>
+                            <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
     
   </div>
 </nav>
