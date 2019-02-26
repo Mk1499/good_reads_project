@@ -12,6 +12,7 @@ export default class BooksModal extends Component {
             categoriesOptions: []
         };
     }
+    
 
     componentDidMount() {
         console.log("inside did mount");

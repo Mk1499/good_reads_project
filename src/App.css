@@ -97,6 +97,9 @@ ul.pagination {
     height: inherit;
     overflow: hidden;
   }
+  .row{
+    height: 100%;
+  }
 
    .col-md-7 {
     background-color: #c9af98;
