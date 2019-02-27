@@ -57,7 +57,7 @@ class Signup extends Component {
         .then(()=> {this.props.history.push(`/`)})
         .catch(error => console.error('Error:', error));
 
-    }
+    } 
   }
 
 

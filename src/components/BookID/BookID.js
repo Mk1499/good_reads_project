@@ -40,22 +40,19 @@ class BookID extends Component {
         this.setState({ book });
       });
   }
-
-
-  changeRating = (bookId, state) => {
-    this.setState({
-      book: { ...this.state.book, shelve: state }
-    })
-  }
+  
 
   changeShelve = (bookId, state) => {
-    this.setState({
-      book: { ...this.state.book, shelve: state }
-    });
+    // this.setState({
+    //   book: { ...this.state.book, shelve: state }
+    // });
 
   }
 
   render() {
+
+    const book_id = this.props.id;
+    const user_id = "5675892864734";
 
     return (
       <div>
@@ -69,9 +66,9 @@ class BookID extends Component {
                 <div className="Card" style={{ overflow: 'hidden' }}>
                   <Media width="100%" src="https://images.gr-assets.com/books/1320562005l/4214.jpg" alt="Card image" />
                   <div>
-                    <DropDown bookId={this.state.bookId} shelveChanged={this.state.eShelve} shelveState={this.state.book.shelve} />
+                    <DropDown bookId={this.props.id} shelveChanged={this.state.book.eShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
-                <RatingStars bookId={this.state.bookId} clickable={true} rate={this.state.rating} changeRate={this.changeRating} />
+                <RatingStars bookId={book_id} clickable={true} user_id= {user_id}/>
                       `  </span>
                   </div>
                 </div>
@@ -83,7 +80,7 @@ class BookID extends Component {
                     <h1 className="display-8" style={{ color: '#445565' }}> Author : {this.state.book.author}</h1>
                     <h1 className="display-9" style={{ color: '#445565' }}> Category : {this.state.book.catName}</h1>
                     <p style={{ color: '#445565' }}>   {this.state.book.rateNumber} Rates
-          <AvgRating avg={this.state.book.avgRating} clickable={false} bookId={this.state.bookId} /> </p>
+          <AvgRating avg={this.state.book.avgRating} clickable={false} bookId={this.props.id} /> </p>
                   </Container>
                   <Container fluid style={{ borderStyle: 'groove', borderRadius: '20px', height: '60%' }}>
                     <h3 className="display-8" style={{ color: '#445565' }}> Description </h3>

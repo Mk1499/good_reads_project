@@ -6,42 +6,89 @@ import QueueAnim from 'rc-queue-anim';
 
 class Login extends Component {
   //Contructor of the component start
-  constructor(props) {
-    let loggedIn = false;
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      email: '',
-      password: '',
-      loggedIn
+      users: { email: "", passwd: ""},
+      errors: {}
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+  };
+
+  // function helps to store user details in state in users: {}
+  handleChange(e) {
+    let users = this.state.users;
+    users[e.target.name] = e.target.value;
+    this.setState({
+      users
+    });
+
+  }
+
+  // validate the user details by calling validateForm() function 
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.validateForm()) {
+
+      e.preventDefault();
+      let users = new FormData(e.target);
+
+      var result = {};
+
+
+      for (let entry of users.entries()) {
+        result[entry[0]] = entry[1];
+      }
+      console.log(result);
+
+
+    //   fetch('https://gomaanodejsapp.herokuapp.com/user/add', {
+    //     method: 'POST',
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Access-Control-Allow-Origin": "*",
+    //       //"Content-Type": "application/x-www-form-urlencoded",
+    //     },
+    //     body: JSON.stringify(result)
+    //   }).then(res => res.json())
+    //     .then(response => console.log('Success:', JSON.stringify(response)))
+    //     .then(()=> {this.props.history.push(`/`)})
+    //     .catch(error => console.error('Error:', error));
+
+    this.props.history.push(`/user`);
+    }
+  }
+
+
+  // Function to Validate  the Input 
+
+  validateForm() {
+
+    let users = this.state.users;
+    let errors = {};
+    let formIsValid = true;
+
+    if (!users["email"]) {
+      formIsValid = false;
+      errors["email"] = "*Please enter Correct Email";
     }
 
-    this.onChange = this.onChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    // this.validate = this.validate.bind(this);
+    if (!users["passwd"]) {
+      formIsValid = false;
+      errors["passwd"] = "*Please enter Correct Password";
+    }
 
-  }
-
-  onChange(e){
     this.setState({
-      [e.target.name]: e.target.value
-    })
+      errors: errors
+    });
+    return formIsValid;
   }
 
-  handleSubmit(e){
-    e.preventDefault()
-    const {email, password} = this.state;
-    // let path = "/user";
-    // this.props.history.push(path);
-    window.location = "/user";
-  }
- 
 
 
   render() {
-
-      if(this.state.loggedIn){
-        return <Redirect to="/user" />
-      }
 
     return (
       <div className="FormCenter">
@@ -54,12 +101,14 @@ class Login extends Component {
 
             <div key="a" className="Field">
               <label className="Label" htmlFor="email">E-mail</label>
-              <input type="email" id="email" className="Input" placeholder="Write Your E-mail" name="email" value={this.state.email} onChange={this.onChange}></input>
+              <input type="email" id="email" className="Input" placeholder="Write Your E-mail" name="email" value={this.state.users.email} onChange={this.handleChange} ></input>
+              <div className="errorMsg">{this.state.errors.email}</div>
             </div>
 
             <div key="b" className="Field">
-              <label className="Label" htmlFor="password">Password</label>
-              <input type="password" id="password" className="Input" placeholder="Password" name="password" value={this.state.password} onChange={this.onChange}></input>
+              <label className="Label" htmlFor="passwd">Password</label>
+              <input type="password" id="passwd" className="Input" placeholder="passwd" name="passwd" value={this.state.users.passwd} onChange={this.handleChange}></input>
+              <div className="errorMsg">{this.state.errors.passwd}</div>
             </div>
 
             <div key="c" className="Field">
