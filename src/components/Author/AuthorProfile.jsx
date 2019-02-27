@@ -33,13 +33,8 @@ class AuthorProfile extends Component {
                 < Navbar />
                 <div class="container Author-page">
                     <div class="row">
-<<<<<<< HEAD
                     {console.log(`Data sent from profile: ${this.state.author.first_name}`)}
                     <AuthorCard authorInfo = {this.state.author} className="col-md-4"   />
-=======
-                    {console.log(`Data sent : ${this.state.author.first_name}`)}
-                    <AuthorCard className="col-md-4" authorInfo={this.state.author}  />
->>>>>>> 563850885b98819b990ae552a73773c4725febb1
                     </div>
                 </div>
 
