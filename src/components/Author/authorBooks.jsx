@@ -1,6 +1,7 @@
 import React ,{Component} from 'react' ; 
 import RatingStars from '../RatingStars/RatingStarts' ; 
 import AvgRating from '../RatingStars/avgRating' ; 
+import { Link } from '@reach/router';
 
 function AuthorBooks(props) {
 
@@ -19,9 +20,13 @@ function AuthorBooks(props) {
                          <img src="https://images-eu.ssl-images-amazon.com/images/I/51VqQqmoHtL.jpg" width="100%"/>
                         </div>
                         <div className="col-sm-9">
-                        <h4>{book.name}</h4>
+                        <h4><Link to = {`/book/${book._id}`}>{book.name}</Link></h4>
                         <AvgRating avg={book.avgRating} clickable={false} bookId = {book.bookId} />
-                        <strong><span style={{margin:"10px"}}>{book.avgRating}</span></strong>
+                        <br /> 
+                        <p><strong><span style={{margin:"10px"}}>
+                        Category :</span></strong>
+                        <Link to = {`/categories/${book.category_id._id}`}> {book.category_id.name}</Link>
+                        </p>
                         </div>
                     </div>
                 </div>

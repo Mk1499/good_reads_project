@@ -22,6 +22,9 @@ class UserHomePage extends Component {
           })
           
       }
+      componentDidMount(){
+        localStorage.setItem("userId" ,`${this.props.id}`) ; 
+      }
 
       render (){
          

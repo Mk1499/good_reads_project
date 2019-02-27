@@ -4,22 +4,21 @@ import UserBookData from './userBooksData';
 class UserTable extends Component {
 
   constructor(props) {
-    super();
+    super(props);
+    
     this.state = {
-      books: [
-        { bookId: 1, cover: "Book Cover ", name: "inferno", author: "Dan Brawn", avgRating: 4, rating: 4, shelve: "read" }
-        , { bookId: 2, cover: "Book Cover ", name: "Davinci Code", author: "Dan Brawn", avgRating: 2, rating: 2, shelve: "read" },
-        {
-          bookId: 3, cover: "Book Cover ", name: "If i stay", author: "Dan Brawn", avgRating: 3, rating: 5,
-          shelve: "currently-reading"
-        }
-        , {
-          bookId: 4, cover: "Book Cover ", name: "The Origin", author: "Dan Brawn", avgRating: 5, rating: 1,
-          shelve: "want-to-read"
-        }
-      ]
+      books: []
     }
   }
+
+
+  componentDidMount(){
+   
+    fetch('https://demo7678798.mockable.io/user')
+    .then(response => response.json())
+    .then(result => this.setState({ books: result.userbooks }));
+}
+
 
   changeRating = (bookId, rate) => {
     this.setState({

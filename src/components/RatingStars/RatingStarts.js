@@ -15,10 +15,13 @@ export default class RatingStars extends Component {
       
         
     }
+
+    
     
     
     handelStarClicked = (e) =>{
-        
+        console.log("userId : "+localStorage.getItem("userId")) ;
+let rate = 0 ; 
         for(let i=1;i<=5;i++){
             
           
@@ -26,12 +29,16 @@ export default class RatingStars extends Component {
                 document.getElementById(`Star_${this.props.bookId}_${i}`).className = "ratingStar filledRatingStar";
                 
                 this.props.changeRate(this.props.bookId,i) ; 
+                rate = i;
+                
             }else{
                 document.getElementById(`Star_${this.props.bookId}_${i}`).className = "ratingStar emptyRatingStar";
             }
+           }
            
-       
-    }
+           fetch(`http://gomaanodejsapp.herokuapp.com/book/editrate/${this.props.bookId}/${localStorage.getItem("userId")}/${rate}` , {
+            method : "GET" 
+         })
    
     }
 
