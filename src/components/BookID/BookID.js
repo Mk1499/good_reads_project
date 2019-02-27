@@ -105,7 +105,8 @@ class BookID extends Component {
         <br></br>
 
         {/* <div className="container">
-          <div className="row">
+          <div clas
+          sName="row">
             <div className="col-md-10">
 
 

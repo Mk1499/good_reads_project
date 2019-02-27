@@ -25,7 +25,7 @@ class UserHomePage extends Component {
 
       render (){
          
-        {return (
+        return (
         <div>
         <Navbar />
         <div className = "container-fluid">
@@ -40,6 +40,6 @@ class UserHomePage extends Component {
         </div>
    </div>);}
       }
-}
+
 
 export default UserHomePage ; 
