@@ -13,10 +13,7 @@ class AuthorProfile extends Component {
             author : []
         }
     }
-    componentDidMount(){
-        
-      
-    }
+   
 
     render() {
         
