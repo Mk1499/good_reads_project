@@ -5,7 +5,7 @@ export default class Categories extends Component {
 
     render() {
         return (
-            <div className="cards_container">
+            <div style={{marginTop:"6%"}}>
                 {
                 this.props.categories.map((category) => {
                     return (

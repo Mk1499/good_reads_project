@@ -21,11 +21,23 @@ export default class CategoriesPage extends Component {
     }
 
     render() {
-      //  const categories = ['Science Fiction', 'Horror', 'Romance', 'Sports', 'Science', 'Technologies'];
+        //  const categories = ['Science Fiction', 'Horror', 'Romance', 'Sports', 'Science', 'Technologies'];
         return (
             <div>
                 <Navbar />
-                <Categories categories={this.state.categories} />
+                {
+
+                    (this.state.categories.length) > 0 ?
+
+                        <Categories categories={this.state.categories} />
+
+                        :
+
+                        <div style={{marginTop:"6%"}}>
+                            <h1>There's no Categories</h1>
+                        </div>
+
+                }
             </div>
         );
     }
