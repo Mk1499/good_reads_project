@@ -10,10 +10,12 @@ class AuthorProfile extends Component {
         super(props);
         this.state = {
            books : [] ,
-            author : {first_name : "Kahled"}
+            author : []
         }
     }
-    componentWillMount(){
+   
+
+    render() {
         
         fetch(`https://gomaanodejsapp.herokuapp.com/author/${this.props.id}`)
         .then(response => response.json())
@@ -22,17 +24,14 @@ class AuthorProfile extends Component {
                          } 
              
             );
-    }
-
-    render() {
-        
+            
         return (
             <div>
                 < Navbar />
                 <div class="container Author-page">
                     <div class="row">
-                    {console.log(`Data sent : ${this.state.author.first_name}`)}
-                    <AuthorCard className="col-md-4" authorInfo={this.state.author}  />
+                    {console.log(`Data sent from profile: ${this.state.author.first_name}`)}
+                    <AuthorCard authorInfo = {this.state.author} className="col-md-4"   />
                     </div>
                 </div>
 

@@ -24,6 +24,15 @@ class AuthorCard extends Component {
         
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            id : nextProps.authorInfo._id,
+            name : nextProps.authorInfo.first_name +" "+nextProps.authorInfo.last_name , 
+            description : nextProps.authorInfo.brief_description , 
+            date_of_birth : nextProps.authorInfo.date_of_birth 
+        })
+    }
+
     render (){
         console.log (`Desc : ${this.state.description}`) ; 
         return (
