@@ -21,12 +21,12 @@ class AllAuthors extends Component {
         return (
             <div>
             <Navbar />
-            <div className="cards_container row">
+            <div className="cards_container row" style={{paddingTop: '5%'}}>
              
                 {
                 this.state.authors.map((author) => {
                     return (
-                        <div className="col-md-4">
+                        <div className="col-md-4" style={{paddingTop: '2%'}}>
                         <AuthorCard className="col-md-4" authorInfo={author} />
                         </div>
                     );

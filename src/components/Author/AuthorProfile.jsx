@@ -31,7 +31,7 @@ class AuthorProfile extends Component {
                 < Navbar />
                 <div class="container Author-page">
                     <div class="row">
-                    {console.log(`Data sent : ${this.state.author}`)}
+                    {console.log(`Data sent : ${this.state.author.first_name}`)}
                     <AuthorCard className="col-md-4" authorInfo={this.state.author}  />
                     </div>
                 </div>
