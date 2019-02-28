@@ -33,7 +33,7 @@ export default class AuthorsModal extends Component {
             }).then(function () {
                 document.getElementById("addAuthorModal").style.display = "none";
                 document.getElementById("addAuthorModal").style.opacity = "0";
-                navigate('/admin');
+                window.location.href = '/admin';
             });
 
         }
