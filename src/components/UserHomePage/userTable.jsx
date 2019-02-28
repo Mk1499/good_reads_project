@@ -14,9 +14,11 @@ class UserTable extends Component {
 
   componentDidMount(){
    
-    fetch('https://demo7678798.mockable.io/user')
+    fetch(`https://gomaanodejsapp.herokuapp.com/user/${localStorage.getItem("userId")}`)
     .then(response => response.json())
-    .then(result => this.setState({ books: result.userbooks }));
+    .then(result => {
+      localStorage.setItem("User-Name" , result.user_name)
+      this.setState({ books: result.userbooks })});
 }
 
 
@@ -35,6 +37,10 @@ class UserTable extends Component {
         return item.bookId === bookId ? { ...item, shelve: state } : item;
       })
     })
+    
+    fetch(`http://gomaanodejsapp.herokuapp.com/state/${state}/${bookId}/${localStorage.getItem("userId")}` , {
+      method : "GET" 
+   })
 
   }
 

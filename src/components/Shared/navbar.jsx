@@ -34,14 +34,15 @@ class Navbar extends Component {
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
-
-          <span class="inset" style={{ marginRight: '3%' }}>
+          
+          <Link to = {`/user/${localStorage.getItem("userId")}`} class="inset" style={{ marginRight: '3%' }}>
             <img src="http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200" />
-          </span>
+          </Link>
 
           <div class="pull-right">
             <ul class="nav pull-right">
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, { localStorage.getItem("User-Name")  
+              }  <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>

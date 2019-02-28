@@ -10,7 +10,8 @@ class DropDown extends Component {
     }
 
     handleChange=(e)=>{
-       this.props.shelveChanged(this.props.bookId,e.target.value)
+       this.props.shelveChanged(this.props.bookId,e.target.value) ; 
+       
     }
     componentDidMount(){
           document.getElementById(this.state.compId).value = this.props.shelveState ; 
