@@ -20,12 +20,10 @@ export default class CategoryBooksPage extends Component {
 
                 let categoryBooks = [];
                 for (let book of result.books_category) {
-                    categoryBooks.push({ author_id: book.auth_id._id, book_id: book._id, author: book.auth_id.first_name + " " + book.auth_id.last_name, name: book.name });
+                    categoryBooks.push({ book_img: book.book_img, author_id: book.auth_id._id, book_id: book._id, author: book.auth_id.first_name + " " + book.auth_id.last_name, name: book.name });
                 }
 
-                console.log(categoryBooks);
                 let category_name = result.books_category[0].category_id.name;
-                console.log("cate_name is " ,category_name);
                 this.setState({ categoryBooks, category_name });
                 const currentBooks = this.state.categoryBooks.slice(0, 2);
                 this.setState({ currentBooks });

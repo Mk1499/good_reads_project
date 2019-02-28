@@ -20,7 +20,7 @@ export default class BooksPage extends Component {
 
                 let books = [];
                 for (let book of result.allBooks) {
-                    books.push({ author_id: book.auth_id._id, book_id: book._id, author: book.auth_id.first_name + " " + book.auth_id.last_name, name: book.name });
+                    books.push({ book_img: book.book_img, author_id: book.auth_id._id, book_id: book._id, author: book.auth_id.first_name + " " + book.auth_id.last_name, name: book.name });
                 }
 
                 console.log(books);

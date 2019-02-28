@@ -1,4 +1,4 @@
-    import React, { Component } from 'react';
+import React, { Component } from 'react';
 import DropDownList from '../DropDownList/DropDownList';
 import { navigate } from '@reach/router';
 
@@ -13,10 +13,10 @@ export default class BooksModal extends Component {
             categoriesOptions: []
         };
     }
-    
+
 
     componentDidMount() {
-        
+
         fetch('https://gomaanodejsapp.herokuapp.com/category/all')
             .then(response => response.json())
             .then(result => this.setState({ categoriesOptions: result.allCategories }));
@@ -44,33 +44,32 @@ export default class BooksModal extends Component {
         for (let entry of data.entries()) {
             result[entry[0]] = entry[1];
         }
-        console.log(result);
+
         var reader = new FileReader();
         reader.readAsDataURL(e.target.file.files[0]);
-        
-        reader.onload = function(e) {
-            // The file's text will be printed here
-            console.log(e.target.result)
+
+        reader.onload = function (e) {
+
             result.file = e.target.result;
-          
 
 
-        fetch('https://gomaanodejsapp.herokuapp.com/book/add', {
-            method: 'POST',
-            headers: {
-                 "Content-Type": "application/json",
-            //     "Access-Control-Allow-Origin": "*",
-            //     //"Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: JSON.stringify(result)
 
-        }).then(() => {
-            document.getElementById("addBookModal").style.display = "none";
-            document.getElementById("addBookModal").style.opacity = "0";
-            navigate('/admin');
-        });
+            fetch('https://gomaanodejsapp.herokuapp.com/book/add', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    //     "Access-Control-Allow-Origin": "*",
+                    //     //"Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: JSON.stringify(result)
 
-    };
+            }).then(() => {
+                document.getElementById("addBookModal").style.display = "none";
+                document.getElementById("addBookModal").style.opacity = "0";
+                navigate('/admin');
+            });
+
+        };
 
     }
 
@@ -78,7 +77,7 @@ export default class BooksModal extends Component {
 
         const authorsOptions = this.state.authorsOptions.map(function (author) {
 
-            return { label: author.first_name + " " + author.first_name, value: author._id };
+            return { label: author.first_name + " " + author.last_name, value: author._id };
         });
 
         const categoriesOptions = this.state.categoriesOptions.map(function (category) {

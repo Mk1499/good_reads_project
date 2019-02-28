@@ -13,6 +13,15 @@ export default class AuthorsTab extends Component {
 
     }
 
+    // display image from base64
+  arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return binary;
+  };
+
+
     componentDidMount() {
 
         fetch('https://gomaanodejsapp.herokuapp.com/author/all')
@@ -21,11 +30,12 @@ export default class AuthorsTab extends Component {
 
                 let i = 1;
                 let authorRows = [];
+                let image = "";
                 for (let author of result.allAuthors) {
-                    authorRows.push([i++, "", author.first_name, author.last_name, author.date_of_birth]);
+                    image = this.arrayBufferToBase64(author.author_img.data.data);
+                    authorRows.push([i++, <img src={image} width="100" height="100"/>, author.first_name, author.last_name, author.date_of_birth]);
                 }
 
-                console.log(authorRows);
                 this.setState({ authorRows });
                 const currentAuthorRows = this.state.authorRows.slice(0, 2);
                 this.setState({ currentAuthorRows });

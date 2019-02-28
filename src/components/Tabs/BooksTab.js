@@ -18,7 +18,6 @@ export default class BooksTab extends Component {
     var binary = '';
     var bytes = [].slice.call(new Uint8Array(buffer));
     bytes.forEach((b) => binary += String.fromCharCode(b));
-    console.log(binary)
     return binary;
   };
 
@@ -33,7 +32,7 @@ export default class BooksTab extends Component {
                 let image = "";
                 for (let book of result.allBooks) {
                     image = this.arrayBufferToBase64(book.book_img.data.data);
-                    bookRows.push([i++, <img src={image} width="200" height="200"/>, book.name, book.auth_id._id, book.auth_id._id]);
+                    bookRows.push([i++, <img src={image} width="100" height="100"/>, book.name, book.auth_id._id, book.auth_id._id]);
                 }
 
                 //console.log(bookRows);

@@ -14,24 +14,29 @@ export default class AuthorsModal extends Component {
             result[entry[0]] = entry[1];
         }
 
-        console.log(result);
+        var reader = new FileReader();
+        reader.readAsDataURL(e.target.file.files[0]);
+
+        reader.onload = function (e) {
+
+            result.file = e.target.result;
 
 
-        fetch('https://gomaanodejsapp.herokuapp.com/author/add', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                //"Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: JSON.stringify(result)
-        }).then(function () {
-            document.getElementById("addAuthorModal").style.display = "none";
-            document.getElementById("addAuthorModal").style.opacity = "0";
-            navigate('/admin');
-        });
+            fetch('https://gomaanodejsapp.herokuapp.com/author/add', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    //"Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: JSON.stringify(result)
+            }).then(function () {
+                document.getElementById("addAuthorModal").style.display = "none";
+                document.getElementById("addAuthorModal").style.opacity = "0";
+                navigate('/admin');
+            });
 
-
+        }
     }
 
 
@@ -52,14 +57,14 @@ export default class AuthorsModal extends Component {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form onSubmit={this.onSubmit}>
+                        <form onSubmit={this.onSubmit} encType="multipart/form-data">
                             <div className="modal-body">
                                 <table>
                                     <tbody>
-                                    <tr><td><label>First_Name</label></td><td><input type="textfield" name="fName" /></td></tr>
-                                    <tr><td><label>Last_Name</label></td><td><input type="textfield" name="lName" /></td></tr>
-                                    <tr><td><label>Date_Of_Birth</label></td><td><input type="date" name="dob" /></td></tr>
-                                    <tr><td><label>Image</label></td><td><input type="textfield" name="bd" /></td></tr>
+                                        <tr><td><label>First_Name</label></td><td><input type="textfield" name="fName" /></td></tr>
+                                        <tr><td><label>Last_Name</label></td><td><input type="textfield" name="lName" /></td></tr>
+                                        <tr><td><label>Date_Of_Birth</label></td><td><input type="date" name="dob" /></td></tr>
+                                        <tr><td><label>Image</label></td><td><input type="file" name="file" /></td></tr>
                                     </tbody>
                                 </table>
                             </div>
