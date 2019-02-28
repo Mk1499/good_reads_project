@@ -28,7 +28,7 @@ export default class CategoriesModal extends Component {
         }).then(function () {
             document.getElementById("addCategoryModal").style.display = "none";
             document.getElementById("addCategoryModal").style.opacity = "0";
-            navigate('/admin');
+            window.location.href = '/admin';
         });
 
 

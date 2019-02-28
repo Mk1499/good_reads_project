@@ -66,7 +66,7 @@ export default class BooksModal extends Component {
             }).then(() => {
                 document.getElementById("addBookModal").style.display = "none";
                 document.getElementById("addBookModal").style.opacity = "0";
-                navigate('/admin');
+                window.location.href = '/admin';
             });
 
         };
