@@ -10,7 +10,8 @@ class AuthorCard extends Component {
             id : "" ,
             name :"" , 
             description :"" , 
-            date_of_birth : ""
+            date_of_birth : "",
+            author_img: ""
         }
     }
 
@@ -19,7 +20,8 @@ class AuthorCard extends Component {
             id : this.props.authorInfo._id,
             name : this.props.authorInfo.first_name +" "+this.props.authorInfo.last_name , 
             description : this.props.authorInfo.brief_description , 
-            date_of_birth : this.props.authorInfo.date_of_birth 
+            date_of_birth : this.props.authorInfo.date_of_birth,
+            author_img : this.props.authorInfo.author_img.data.data
         })
         
     }
@@ -29,18 +31,28 @@ class AuthorCard extends Component {
             id : nextProps.authorInfo._id,
             name : nextProps.authorInfo.first_name +" "+nextProps.authorInfo.last_name , 
             description : nextProps.authorInfo.brief_description , 
-            date_of_birth : nextProps.authorInfo.date_of_birth 
+            date_of_birth : nextProps.authorInfo.date_of_birth,
+            author_img : nextProps.authorInfo.author_img.data.data
         })
     }
 
+    arrayBufferToBase64(buffer) {
+        var binary = '';
+        var bytes = [].slice.call(new Uint8Array(buffer));
+        bytes.forEach((b) => binary += String.fromCharCode(b));
+        return binary;
+    };
+
     render (){
-        console.log (`Desc : ${this.state.description}`) ; 
+        
+        const image = this.arrayBufferToBase64(this.props.authorInfo.author_img.data.data);
+
         return (
 
             <div class="card well-sm">
             <div class="row">
                 <div class="col-sm-6 col-md-4">
-                    <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100%" alt="" class="img-rounded img-responsive" />
+                    <img src={image} alt="" class="img-rounded img-responsive" width="200" height="200" />
                 </div>
                 <div class="col-sm-6 col-md-8 auth-info">
                     <h4><Link to={"/author/"+this.state.id}>{this.state.name}</Link></h4>
