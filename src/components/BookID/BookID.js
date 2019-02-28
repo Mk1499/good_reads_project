@@ -24,7 +24,8 @@ class BookID extends Component {
         description: "This is a modified jumbotron that occupies the entire horizontal space of its parent  This is a modified jumbotron that occupies the entire horizontal space of its parent",
         rateNumber: "" , 
         category_id : "" ,
-        auth_id : ""
+        auth_id : "" ,
+        book_img :""
       } , 
       book_reviews : []
 
@@ -32,9 +33,17 @@ class BookID extends Component {
   }
 
 
+  arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return binary;
+};
+
   componentDidMount() {
     let book = {};
-    fetch(`https://gomaanodejsapp.herokuapp.com/book/${this.props.id}`)
+    let userId = localStorage.getItem("userId") ; 
+    fetch(`https://gomaanodejsapp.herokuapp.com/book/${this.props.book_id}/${userId}`)
       .then(response => response.json())
       .then(result => {
         book.name = result.bookData.name;
@@ -45,6 +54,7 @@ class BookID extends Component {
         book.rateNumber = result.bookData.no_of_rates;
         book.category_id = result.bookData.category_id._id  ; 
         book.auth_id = result.bookData.auth_id._id ;
+        book.book_img =  this.arrayBufferToBase64(this.props.book_img.data.data);
         this.setState({ book });
       });
 
