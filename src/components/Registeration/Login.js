@@ -28,30 +28,30 @@ class Login extends Component {
   }
 
   handleSubmit(e) {
-    // e.preventDefault();
-    // if (this.validateForm()) {
+    e.preventDefault();
+    if (this.validateForm()) {
 
-    //   let users = new FormData(e.target);
+      let users = new FormData(e.target);
 
-    //   var result = {};
-    //   for (let entry of users.entries()) {
-    //     result[entry[0]] = entry[1];
-    //   }
-    //   console.log(result);
+      var result = {};
+      for (let entry of users.entries()) {
+        result[entry[0]] = entry[1];
+      }
+      console.log(result);
 
 
-    //   fetch('https://gomaanodejsapp.herokuapp.com/api', {
-    //     method: 'POST',
-    //     headers: {
-    //       // "Content-Type": "application/json",
-    //       // "Access-Control-Allow-Origin": "*",
-    //       //"Content-Type": "application/x-www-form-urlencoded",
-    //       Authorization: "Bearer"
-    //     },
-    //     // body: JSON.stringify(result)
-    //    }).then(response => console.log('Successttttt:', JSON.stringify(response)))
-    //     .then(()=> {this.props.history.push(`/user`)})
-    //     .catch(error => console.error('Error:', error));
+      fetch('https://gomaanodejsapp.herokuapp.com/api', {
+        method: 'POST',
+        headers: {
+          // "Content-Type": "application/json",
+          // "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: "Bearer"
+        },
+        body: JSON.stringify(result)
+       }).then(response => console.log('Success:', JSON.stringify(response)))
+        .then(()=> {this.props.history.push(`/user`)})
+        .catch(error => console.error('Error:', error));
 
     // this.props.history.push(`/api`);
     }
