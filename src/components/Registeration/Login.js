@@ -6,42 +6,86 @@ import QueueAnim from 'rc-queue-anim';
 
 class Login extends Component {
   //Contructor of the component start
-  constructor(props) {
-    let loggedIn = false;
-    super(props);
+  constructor() {
+    super();  
     this.state = {
-      email: '',
-      password: '',
-      loggedIn
+      users: { email: "", password: ""},
+      errors: {}
     }
 
-    this.onChange = this.onChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     // this.validate = this.validate.bind(this);
 
   }
 
-  onChange(e){
+  handleChange(e) {
+    let users = this.state.users;
+    users[e.target.name] = e.target.value;
     this.setState({
-      [e.target.name]: e.target.value
-    })
+      users
+    });
   }
 
-  handleSubmit(e){
-    e.preventDefault()
-    const {email, password} = this.state;
-    // let path = "/user";
-    // this.props.history.push(path);
-    window.location = "/user";
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.validateForm()) {
+
+      let users = new FormData(e.target);
+
+      var result = {};
+      for (let entry of users.entries()) {
+        result[entry[0]] = entry[1];
+      }
+      console.log(result);
+
+
+      fetch('https://gomaanodejsapp.herokuapp.com/api', {
+        method: 'POST',
+        headers: {
+          // "Content-Type": "application/json",
+          // "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: "Bearer"
+        },
+        body: JSON.stringify(result)
+       }).then(response => console.log('Success:', JSON.stringify(response)))
+        .then(()=> {this.props.history.push(`/user`)})
+        .catch(error => console.error('Error:', error));
+
+    // this.props.history.push(`/api`);
+    }
   }
- 
+
+
+  // Function to Validate  the Input 
+
+  validateForm() {
+
+    let users = this.state.users;
+    let errors = {};
+    let formIsValid = true;
+
+    if (!users["email"]) {
+      formIsValid = false;
+      errors["email"] = "*Please enter Correct Email";
+    }
+
+    if (!users["passwd"]) {
+      formIsValid = false;
+      errors["passwd"] = "*Please enter Correct Password";
+    }
+
+    this.setState({
+      errors: errors
+    });
+    return formIsValid;
+  }
+
 
 
   render() {
 
-      if(this.state.loggedIn){
-        return <Redirect to="/user" />
-      }
 
     return (
       <div className="FormCenter">
@@ -54,13 +98,15 @@ class Login extends Component {
 
             <div key="a" className="Field">
               <label className="Label" htmlFor="email">E-mail</label>
-              <input type="email" id="email" className="Input" placeholder="Write Your E-mail" name="email" value={this.state.email} onChange={this.onChange}></input>
-            </div>
+              <input type="email" id="email" className="Input" placeholder="Write Your E-mail" name="email" value={this.state.users.email} onChange={this.handleChange} ></input>
+              <div className="errorMsg">{this.state.errors.email}</div>
+              </div>
 
             <div key="b" className="Field">
-              <label className="Label" htmlFor="password">Password</label>
-              <input type="password" id="password" className="Input" placeholder="Password" name="password" value={this.state.password} onChange={this.onChange}></input>
-            </div>
+            <label className="Label" htmlFor="passwd">Password</label>
+              <input type="password" id="passwd" className="Input" placeholder="passwd" name="passwd" value={this.state.users.passwd} onChange={this.handleChange}></input>
+              <div className="errorMsg">{this.state.errors.passwd}</div>
+              </div>
 
             <div key="c" className="Field">
               <button className="fieldButton" onClick={this.handleSubmit}>Login</button>
