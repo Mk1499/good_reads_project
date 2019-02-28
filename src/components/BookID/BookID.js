@@ -55,7 +55,7 @@ class BookID extends Component {
 
   }
 
-  render() {
+  render(props) {
 
     return (
       <div>
@@ -71,7 +71,7 @@ class BookID extends Component {
                   <div>
                     <DropDown bookId={this.state.bookId} shelveChanged={this.state.eShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
-                <RatingStars bookId={this.state.bookId} clickable={true} rate={this.state.rating} changeRate={this.changeRating} />
+                {/* <RatingStars bookId={this.props.id} clickable={true} rate={this.state.book.rating} changeRate={this.props.changeRate} userId ={this.props.userId}/> */}
                       `  </span>
                   </div>
                 </div>
