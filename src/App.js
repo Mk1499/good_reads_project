@@ -32,7 +32,7 @@ class App extends Component {
         <UserHomePage path="/user/:id" />
 
         {/* // just for test delete when finish */}
-        <BookID path="/book/:id"/>
+        <BookID path="/book/:book_id/:user_id"/>
         <CategoriesPage path="/categories" />
         <BooksPage path="/books" />
         <CategoryBooksPage path="/categories/:id" />

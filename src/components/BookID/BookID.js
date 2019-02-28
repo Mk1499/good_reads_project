@@ -24,21 +24,14 @@ class BookID extends Component {
         description: "This is a modified jumbotron that occupies the entire horizontal space of its parent  This is a modified jumbotron that occupies the entire horizontal space of its parent",
         rateNumber: "" , 
         category_id : "" ,
-        auth_id : "" ,
-        book_img :""
+        auth_id : "" , 
+        book_img:""
       } , 
       book_reviews : []
 
     }
   }
 
-
-  arrayBufferToBase64(buffer) {
-    var binary = '';
-    var bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => binary += String.fromCharCode(b));
-    return binary;
-};
 
   componentDidMount() {
     let book = {};
@@ -54,7 +47,6 @@ class BookID extends Component {
         book.rateNumber = result.bookData.no_of_rates;
         book.category_id = result.bookData.category_id._id  ; 
         book.auth_id = result.bookData.auth_id._id ;
-        book.book_img =  this.arrayBufferToBase64(this.props.book_img.data.data);
         this.setState({ book });
       });
 
@@ -100,7 +92,7 @@ class BookID extends Component {
                 <div className="Card" style={{ overflow: 'hidden' }}>
                   <Media width="100%" src="https://images.gr-assets.com/books/1320562005l/4214.jpg" alt="Card image" />
                   <div>
-                    <DropDown bookId={this.props.id} shelveChanged={this.changeShelve} shelveState={this.state.book.shelve} />
+                    <DropDown bookId={this.props.book_id} shelveChanged={this.changeShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
                 {/* <RatingStars bookId={this.props.id} clickable={true} rate={this.state.book.rating} changeRate={this.props.changeRate} userId ={this.props.userId}/> */}
                       `  </span>
