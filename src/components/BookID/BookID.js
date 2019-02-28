@@ -32,6 +32,13 @@ class BookID extends Component {
     }
   }
 
+  arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return binary;
+};
+
 
   componentDidMount() {
     let book = {};
@@ -47,13 +54,14 @@ class BookID extends Component {
         book.rateNumber = result.bookData.no_of_rates;
         book.category_id = result.bookData.category_id._id  ; 
         book.auth_id = result.bookData.auth_id._id ;
+        book.book_img = this.arrayBufferToBase64( result.bookData.book_img.data.data) ; 
         this.setState({ book });
       });
 
 
       // Fetch Book Comments 
 
-      fetch(`https://gomaanodejsapp.herokuapp.com/review/bybook/${this.props.id}`)
+      fetch(`https://gomaanodejsapp.herokuapp.com/review/bybook/${this.props.book_id}`)
       .then(response => response.json())
       .then(result => {
                this.setState({book_reviews : result.bookReviews})
@@ -79,7 +87,7 @@ class BookID extends Component {
   }
 
   render(props) {
-
+      console.log("img : " +this.state.book.book_img) ; 
     return (
       <div>
         <Navbar />
@@ -90,7 +98,7 @@ class BookID extends Component {
               <div className="col-md-3 ">
 
                 <div className="Card" style={{ overflow: 'hidden' }}>
-                  <Media width="100%" src="https://images.gr-assets.com/books/1320562005l/4214.jpg" alt="Card image" />
+                  <Media width="100%" src={this.state.book.book_img} alt="Card image" />
                   <div>
                     <DropDown bookId={this.props.book_id} shelveChanged={this.changeShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
@@ -138,7 +146,7 @@ class BookID extends Component {
             this.state.book_reviews.map((review) => {
               return (
                   
-                <BookReview bookId = {this.props.id} review={review}/>        
+                <BookReview bookId = {this.props.book_id} review={review}/>        
                   
               );
           })
