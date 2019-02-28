@@ -16,7 +16,9 @@ class UserTable extends Component {
    
     fetch(`https://gomaanodejsapp.herokuapp.com/user/${localStorage.getItem("userId")}`)
     .then(response => response.json())
-    .then(result => this.setState({ books: result.userbooks }));
+    .then(result => {
+      localStorage.setItem("User-Name" , result.user_name)
+      this.setState({ books: result.userbooks })});
 }
 
 
