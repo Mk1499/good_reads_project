@@ -38,7 +38,7 @@ class BookID extends Component {
     bytes.forEach((b) => binary += String.fromCharCode(b));
     return binary;
 };
-
+ 
 
   componentDidMount() {
     let book = {};
