@@ -16,7 +16,7 @@ export default class BooksModal extends Component {
     
 
     componentDidMount() {
-        console.log("inside did mount");
+        
         fetch('https://gomaanodejsapp.herokuapp.com/category/all')
             .then(response => response.json())
             .then(result => this.setState({ categoriesOptions: result.allCategories }));
@@ -45,14 +45,22 @@ export default class BooksModal extends Component {
             result[entry[0]] = entry[1];
         }
         console.log(result);
+        var reader = new FileReader();
+        reader.readAsDataURL(e.target.file.files[0]);
+        
+        reader.onload = function(e) {
+            // The file's text will be printed here
+            console.log(e.target.result)
+            result.file = e.target.result;
+          
 
 
         fetch('https://gomaanodejsapp.herokuapp.com/book/add', {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                //"Content-Type": "application/x-www-form-urlencoded",
+                 "Content-Type": "application/json",
+            //     "Access-Control-Allow-Origin": "*",
+            //     //"Content-Type": "application/x-www-form-urlencoded",
             },
             body: JSON.stringify(result)
 
@@ -62,6 +70,7 @@ export default class BooksModal extends Component {
             navigate('/admin');
         });
 
+    };
 
     }
 
@@ -89,14 +98,14 @@ export default class BooksModal extends Component {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form onSubmit={this.onSubmit}>
+                        <form onSubmit={this.onSubmit} encType="multipart/form-data">
                             <div className="modal-body">
                                 <table>
                                     <tbody>
                                         <tr><td><label>Book_Name</label></td><td><input type="textfield" name="bName" /></td></tr>
                                         <tr><td><label>Category</label></td><td><DropDownList options={categoriesOptions} name="catID" /></td></tr>
                                         <tr><td><label>Author</label></td><td><DropDownList options={authorsOptions} name="authID" /></td></tr>
-                                        <tr><td><label>Image</label></td><td><input type="textfield" name="image" /></td></tr>
+                                        <tr><td><label>Image</label></td><td><input type="file" name="file" /></td></tr>
                                     </tbody>
                                 </table>
                             </div>

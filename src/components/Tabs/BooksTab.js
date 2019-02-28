@@ -13,7 +13,16 @@ export default class BooksTab extends Component {
 
     }
 
-    componentDidMount() {
+// display image from base64
+  arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    console.log(binary)
+    return binary;
+  };
+
+    componentDidMount = () =>{
         
         fetch('https://gomaanodejsapp.herokuapp.com/book/all')
             .then(response => response.json())
@@ -21,11 +30,13 @@ export default class BooksTab extends Component {
 
                 let i = 1;
                 let bookRows = [];
+                let image = "";
                 for (let book of result.allBooks) {
-                    bookRows.push([i++, "", book.name, book.category_id._id, book.auth_id._id]);
+                    image = this.arrayBufferToBase64(book.book_img.data.data);
+                    bookRows.push([i++, <img src={image} width="200" height="200"/>, book.name, book.auth_id._id, book.auth_id._id]);
                 }
 
-                console.log(bookRows);
+                //console.log(bookRows);
                 this.setState({ bookRows });
                 const currentBookRows = this.state.bookRows.slice(0, 2);
                 this.setState({ currentBookRows });
