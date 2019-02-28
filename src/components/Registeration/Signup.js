@@ -58,7 +58,7 @@ class Signup extends Component {
         .catch(error => console.error('Error:', error));
 
     }
-  }
+    }
 
 
   // Function to Validate  the Input 
