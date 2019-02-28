@@ -53,6 +53,10 @@ class BookID extends Component {
       book: { ...this.state.book, shelve: state }
     });
 
+    fetch(`http://gomaanodejsapp.herokuapp.com/state/${state}/${bookId}/${localStorage.getItem("userId")}` , {
+      method : "GET" 
+   })
+
   }
 
   render(props) {
@@ -69,7 +73,7 @@ class BookID extends Component {
                 <div className="Card" style={{ overflow: 'hidden' }}>
                   <Media width="100%" src="https://images.gr-assets.com/books/1320562005l/4214.jpg" alt="Card image" />
                   <div>
-                    <DropDown bookId={this.state.bookId} shelveChanged={this.state.eShelve} shelveState={this.state.book.shelve} />
+                    <DropDown bookId={this.props.id} shelveChanged={this.changeShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
                 {/* <RatingStars bookId={this.props.id} clickable={true} rate={this.state.book.rating} changeRate={this.props.changeRate} userId ={this.props.userId}/> */}
                       `  </span>
