@@ -14,7 +14,7 @@ class AddReview extends Component {
     }
 
     addReview = (e)=> {
-        e.preventDefault();
+       
         let review = new FormData(e.target) ; 
         var result = {};
         let bookId = this.props.bookId ; 
@@ -42,7 +42,7 @@ class AddReview extends Component {
       
         return (
             <section>
-            <h2>Add your Review </h2>
+            <h2 style={this.state.style}>Add your Review </h2>
  <div className = "card" style= {this.state.style}>
     <form onSubmit = {this.addReview}>
      <div className="row">
