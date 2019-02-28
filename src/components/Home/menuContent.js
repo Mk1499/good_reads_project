@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 
 class MenuContent extends Component {
@@ -16,7 +16,7 @@ class MenuContent extends Component {
     return (
       
       <div className="menu">
-
+        {this.items.map(i => <div className="menu-item">
           <Link to="/"
             onClick={this.props.closeCallback}> Home </Link>
 
@@ -28,7 +28,7 @@ class MenuContent extends Component {
 
           <Link to="/"
             onClick={this.props.closeCallback}> Terms  </Link>
-
+        </div>)}
         </div>
     )
   }

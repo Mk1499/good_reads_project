@@ -9,17 +9,29 @@ class AuthorProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            book: { bookId: 1, cover: "Book Cover ", name: "inferno", author: "Dan Brawn", avgRating: 4, rating: 4, shelve: "read" }
+           books : [] ,
+            author : []
         }
     }
+   
 
     render() {
+        
+        fetch(`https://gomaanodejsapp.herokuapp.com/author/${this.props.id}`)
+        .then(response => response.json())
+        .then(result =>  {this.setState({ author: result.author }) ; 
+                         this.setState({ books: result.author_books })
+                         } 
+             
+            );
+            
         return (
             <div>
                 < Navbar />
                 <div class="container Author-page">
                     <div class="row">
-                     < AuthorCard />
+                    {console.log(`Data sent from profile: ${this.state.author.first_name}`)}
+                    <AuthorCard authorInfo = {this.state.author} className="col-md-4"   />
                     </div>
                 </div>
 
@@ -28,7 +40,7 @@ class AuthorProfile extends Component {
                     <div className="row">
 
                         <h3 style={{ margin: "20px" }}>Author's Books</h3>
-                        <AuthorBooks book={this.state.book} />
+                        <AuthorBooks books ={this.state.books} />
                     </div>
                 </div>
 

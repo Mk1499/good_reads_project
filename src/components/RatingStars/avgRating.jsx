@@ -28,7 +28,7 @@ class AvgRating extends Component {
      }
     }
         render (){
-            {return (
+            return (
 
              <div>
             <span id= {this.state.idnum1}  className="ratingStar emptyRatingStar" style={{float:"left"}}>&nbsp;</span>
@@ -40,5 +40,5 @@ class AvgRating extends Component {
             ); }
         }
 
-}
+
 export default AvgRating ; 

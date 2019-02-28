@@ -22,10 +22,13 @@ class UserHomePage extends Component {
           })
           
       }
+      componentDidMount(){
+        localStorage.setItem("userId" ,`${this.props.id}`) ; 
+      }
 
       render (){
          
-        {return (
+        return (
         <div>
         <Navbar />
         <div className = "container-fluid">
@@ -40,6 +43,6 @@ class UserHomePage extends Component {
         </div>
    </div>);}
       }
-}
+
 
 export default UserHomePage ; 

@@ -29,7 +29,7 @@ class App extends Component {
       <Router>
         <Home path="/" />
         <Admin path="/admin" />
-        <UserHomePage path="/user" />
+        <UserHomePage path="/user/:id" />
 
         {/* // just for test delete when finish */}
         <BookID path="/book/:id"/>

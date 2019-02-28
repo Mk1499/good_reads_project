@@ -80,8 +80,8 @@ class BookID extends Component {
                 <div className="book-description">
                   <Container fluid>
                     <h1 className="display-3">{this.state.book.name}</h1>
-                    <h1 className="display-8" style={{ color: '#445565' }}> By : {this.state.book.author}</h1>
-                    <h1 className="display-9" style={{ color: '#445565' }}> Cat. : {this.state.book.catName}</h1>
+                    <h1 className="display-8" style={{ color: '#445565' }}> Author : {this.state.book.author}</h1>
+                    <h1 className="display-9" style={{ color: '#445565' }}> Category : {this.state.book.catName}</h1>
                     <p style={{ color: '#445565' }}>   {this.state.book.rateNumber} Rates
           <AvgRating avg={this.state.book.avgRating} clickable={false} bookId={this.state.bookId} /> </p>
                   </Container>
@@ -105,7 +105,8 @@ class BookID extends Component {
         <br></br>
 
         {/* <div className="container">
-          <div className="row">
+          <div clas
+          sName="row">
             <div className="col-md-10">
 
 
