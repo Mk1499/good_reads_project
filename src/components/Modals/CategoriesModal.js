@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { navigate } from '@reach/router';
 
 export default class CategoriesModal extends Component {
 
@@ -27,7 +28,7 @@ export default class CategoriesModal extends Component {
         }).then(function () {
             document.getElementById("addCategoryModal").style.display = "none";
             document.getElementById("addCategoryModal").style.opacity = "0";
-            this.props.history.push('/admin');
+            navigate('/admin');
         });
 
 

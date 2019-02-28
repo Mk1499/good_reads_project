@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DropDownList from '../DropDownList/DropDownList';
+import { navigate } from '@reach/router';
 
 export default class BooksModal extends Component {
 
@@ -58,6 +59,7 @@ export default class BooksModal extends Component {
         }).then(() => {
             document.getElementById("addBookModal").style.display = "none";
             document.getElementById("addBookModal").style.opacity = "0";
+            navigate('/admin');
         });
 
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { navigate } from '@reach/router';
 
-export default class AuthorModal extends Component {
+export default class AuthorsModal extends Component {
 
     onSubmit = function (e) {
 
@@ -27,7 +28,7 @@ export default class AuthorModal extends Component {
         }).then(function () {
             document.getElementById("addAuthorModal").style.display = "none";
             document.getElementById("addAuthorModal").style.opacity = "0";
-            this.props.history.push('/admin');
+            navigate('/admin');
         });
 
 

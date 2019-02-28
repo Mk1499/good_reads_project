@@ -24,7 +24,18 @@ class Pagination extends Component {
 
   constructor(props) {
     super(props);
-    const { totalRecords = null, pageLimit = 2, pageNeighbours = 1 } = props;
+    this.state = { currentPage: 1 };
+  
+  }
+
+  componentDidMount() {
+    
+    this.gotoPage(1);
+  
+  }
+
+  componentWillUpdate(){
+    const { totalRecords, pageLimit, pageNeighbours } = this.props;
 
     this.pageLimit = typeof pageLimit === 'number' ? pageLimit : 2;
     this.totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
@@ -34,13 +45,10 @@ class Pagination extends Component {
       ? Math.max(0, Math.min(pageNeighbours, 2))
       : 1;
 
-    this.totalPages = Math.ceil(this.totalRecords / this.pageLimit);
+    this.totalPages = Math.ceil(this.totalRecords / this.pageLimit); 
 
-    this.state = { currentPage: 1 };
-  }
+    if (!this.totalRecords || this.totalPages === 1) return null;
 
-  componentDidMount() {
-    this.gotoPage(1);
   }
 
   gotoPage = page => {
@@ -145,9 +153,7 @@ class Pagination extends Component {
   }
 
   render() {
-
-    if (!this.totalRecords || this.totalPages === 1) return null;
-
+  
     const { currentPage } = this.state;
     const pages = this.fetchPageNumbers();
 
@@ -176,7 +182,8 @@ class Pagination extends Component {
               );
 
               return (
-                <li key={index} className={`page-item${ currentPage === page ? ' active' : ''}`}>
+                <li key={index} className={`page-item${ this.state.currentPage === page ? ' active' : ''}`}>
+                {console.log(page , ' ', currentPage)}
                   <a className="page-link" href="#" onClick={ this.handleClick(page) }>{ page }</a>
                 </li>
               );
