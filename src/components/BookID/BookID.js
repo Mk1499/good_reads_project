@@ -145,6 +145,8 @@ class BookID extends Component {
         </div>
 
 
+      <AddReview bookId = {this.props.id}/>
+
       </div>
     );
   }
