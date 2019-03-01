@@ -7,7 +7,7 @@ class UserTable extends Component {
     super(props);
     
     this.state = {
-      books: []
+      books: null
     }
   }
 
@@ -45,6 +45,10 @@ class UserTable extends Component {
   }
 
   render() {
+
+    if(this.state.books == null)
+      return null;
+
     return (
       <table className="table">
         <thead>
