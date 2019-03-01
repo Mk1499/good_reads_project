@@ -14,22 +14,33 @@ class AvgRating extends Component {
         }
     } 
    
-    componentDidMount(){
-        for(let i=1;i<=5;i++){
+coloringStars(){
+    for(let i=1;i<=5;i++){
        
           
-            if( this.props.avg >= i){
-                document.getElementById(`avgStar_${this.props.bookId}_${i}`).className = "ratingStar filledRatingStar";
-            }else{
-                document.getElementById(`avgStar_${this.props.bookId}_${i}`).className = "ratingStar emptyRatingStar";
-            }
-        
-        
-     }
+        if( this.props.avg >= i){
+            document.getElementById(`avgStar_${this.props.bookId}_${i}`).className = "ratingStar filledRatingStar";
+        }else{
+            document.getElementById(`avgStar_${this.props.bookId}_${i}`).className = "ratingStar emptyRatingStar";
+        }
+    
+    
+ }
+}
+
+    componentDidMount(){
+       
+        this.coloringStars();   
+    }
+
+    componentWillReceiveProps(){
+        this.coloringStars();
     }
         render (){
+            console.log("Avg Rating : "+this.props.avg);
             return (
 
+                
              <div>
             <span id= {this.state.idnum1}  className="ratingStar emptyRatingStar" style={{float:"left"}}>&nbsp;</span>
             <span id= {this.state.idnum2}  className="ratingStar emptyRatingStar" style={{float:"left"}}>&nbsp;</span>

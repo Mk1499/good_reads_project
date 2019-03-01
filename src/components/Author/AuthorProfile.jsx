@@ -48,7 +48,17 @@ class AuthorProfile extends Component {
                     <div className="row">
 
                         <h3 style={{ margin: "20px" }}>Author's Books</h3>
-                        <AuthorBooks books={this.state.books} />
+                        
+                        
+                        {
+                            this.state.books.map(
+                                (book) =>
+                               <AuthorBooks book ={book} />
+                        
+                                                )
+                        
+                        }
+                        
                     </div>
                 </div>
 

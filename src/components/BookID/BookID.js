@@ -108,10 +108,13 @@ class BookID extends Component {
 
                 <div className="Card" style={{ overflow: 'hidden' }}>
                   <Media width="100%" src={this.state.book.book_img} alt="Card image" />
+                  <br /> <br />
                   <div>
                     <DropDown bookId={this.props.book_id} shelveChanged={this.changeShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
-          
+                    
+                    <br />
+
                 <RatingStars bookId={this.props.book_id} clickable={true} rate={this.state.book.userRate} changeRate={this.changeRating} userId ={this.props.user_id}/>
                       `  </span>
                   </div>
@@ -120,23 +123,24 @@ class BookID extends Component {
               <div className="col-md-9">
                 <div className="book-description">
                   <Container fluid>
-                    <h1 className="display-3">{this.state.book.name}</h1>
-                    <h1 className="display-8" style={{ color: '#445565' }}> Author : <Link to ={`/author/${this.state.book.auth_id}`}>
+                    <h2 className="display-3">{this.state.book.name}</h2>
+                    <h2 className="display-8" style={{ color: '#445565' }}> Author : <Link to ={`/author/${this.state.book.auth_id}`}>
                     {this.state.book.author}
-                    </Link></h1>
+                    </Link></h2>
                     <h1 className="display-9" style={{ color: '#445565' }}> Category : 
                     <Link to ={`/categories/${this.state.book.category_id}`}>
                     {this.state.book.catName}
                     </Link>
                     </h1>
                     <p style={{ color: '#445565' }}>   {this.state.book.rateNumber} Rates
-          
-          <AvgRating avg={this.state.book.avgRating} clickable={false} bookId={this.state.bookId} /> </p>
+                  
+                  <br /> <br />
+          <AvgRating avg={this.state.book.avgRating} clickable={false} bookId={this.props.book_id} /> </p>
                   </Container>
-                  <Container fluid style={{ borderStyle: 'groove', borderRadius: '20px', height: '60%' }}>
+                  {/* <Container fluid style={{ borderStyle: 'groove', borderRadius: '20px', height: '60%' }}>
                     <h3 className="display-8" style={{ color: '#445565' }}> Description </h3>
                     <p className="lead"> {this.state.book.description}</p>
-                  </Container>
+                  </Container> */}
                 </div>
 
               </div>
@@ -166,7 +170,7 @@ class BookID extends Component {
         </div>
 
 
-      <AddReview bookId = {this.props.id}/>
+      <AddReview bookId = {this.props.book_id}/>
 
       </div>
     );

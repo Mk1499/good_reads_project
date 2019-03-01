@@ -14,6 +14,8 @@ class AddReview extends Component {
     }
 
     addReview = (e)=> {
+
+        e.preventDefault() ; 
        
         let review = new FormData(e.target) ; 
         var result = {};
@@ -34,7 +36,9 @@ class AddReview extends Component {
             },
             body: JSON.stringify(result)
 
-        })
+        }).then(
+           ()=> window.location.reload()
+        )
 
     }
 
@@ -44,7 +48,7 @@ class AddReview extends Component {
             <section>
             <h2 style={this.state.style}>Add your Review </h2>
  <div className = "card" style= {this.state.style}>
-    <form onSubmit = {this.addReview}>
+    <form onSubmit = {this.addReview} encType="multipart/form-data">
      <div className="row">
        <div className = "col-sm-9">
        <div class="form-group">
