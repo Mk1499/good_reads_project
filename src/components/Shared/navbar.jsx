@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 class Navbar extends Component {
 
+  onLogout = ()=>{
+    localStorage.removeItem("userId");
+    window.location.href = "/";
+  }
 
   render() {
 
@@ -17,7 +21,7 @@ class Navbar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link className="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
+              <Link className="nav-link" to={`/user/${localStorage.getItem("userId")}`}>Home <span class="sr-only">(current)</span></Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/categories">Categories</Link>
@@ -45,7 +49,7 @@ class Navbar extends Component {
               }  <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
-                  <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
+                  <li onClick={this.onLogout} style={{cursor: "pointer"}}><label><i class="icon-off"></i> Logout</label></li>
                 </ul>
               </li>
             </ul>
