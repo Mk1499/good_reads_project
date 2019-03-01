@@ -22,7 +22,7 @@ export default function UserBookData(props) {
   let userId = localStorage.getItem("userId") ; 
   return (
     <tr>
-      <th scope="row"><Link to = {`/book/${props.book.bookId}/${userId}`} ><img src ={image} width="100%" /></Link></th>
+      <th scope="row"><Link to = {`/book/${props.book.bookId}/${userId}`} ><img src ={image} width="100" height="100"/></Link></th>
       <td><Link to = {`/book/${props.book.bookId}/${userId}`} >{props.book.name}</Link></td>
       <td><Link to = {`/author/${props.book.authorId}`} >{props.book.author}</Link></td>
       <td><AvgRating avg={props.book.avgRating} clickable={false} bookId={props.book.bookId} /></td>
