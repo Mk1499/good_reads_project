@@ -34,8 +34,9 @@ export default class RatingStars extends Component {
     
     
     handelStarClicked = (e) =>{
-        console.log("userId : "+localStorage.getItem("userId")) ;
-let rate = 0 ; 
+        
+       let rate = 0 ; 
+
         for(let i=1;i<=5;i++){
             
           
@@ -50,13 +51,16 @@ let rate = 0 ;
             }
            }
            
-           fetch(`http://gomaanodejsapp.herokuapp.com/book/editrate/${this.props.bookId}/${localStorage.getItem("userId")}/${rate}` , {
-            method : "GET" 
-         })
+           fetch(`http://gomaanodejsapp.herokuapp.com/book/editrate/${this.props.bookId}/${localStorage.getItem("userId")}/${rate}`)
    
     }
 
     changeStarsColors(){
+  
+    }
+
+    componentDidMount(){
+        // this.changeStarsColors() ; 
         for(let i=1;i<=5;i++){
        
           
@@ -68,10 +72,6 @@ let rate = 0 ;
         
         
      }
-    }
-
-    componentDidMount(){
-        this.changeStarsColors() ; 
     }
 
 

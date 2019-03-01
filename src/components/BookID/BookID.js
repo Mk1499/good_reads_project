@@ -117,6 +117,8 @@ class BookID extends Component {
 
                 <RatingStars bookId={this.props.book_id} clickable={true} rate={this.state.book.userRate} changeRate={this.changeRating} userId ={this.props.user_id}/>
                       `  </span>
+
+                      
                   </div>
                 </div>
               </div>
