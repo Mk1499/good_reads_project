@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './ratingstars.css';
+
 export default class RatingStars extends Component {
   
   
@@ -10,12 +11,25 @@ export default class RatingStars extends Component {
             idnum2 : "Star_"+this.props.bookId+"_2",
             idnum3 : "Star_"+this.props.bookId+"_3",
             idnum4 : "Star_"+this.props.bookId+"_4",
-            idnum5 : "Star_"+this.props.bookId+"_5"
+            idnum5 : "Star_"+this.props.bookId+"_5" , 
+            rate : this.props.rate 
         }
+
+        console.log("Rate in Constructor :" + this.state.rate) ;
       
         
     }
 
+    
+    componentWillReceiveProps(nextProps){
+        
+        this.setState({
+            rate : nextProps.rate 
+        })  
+
+        console.log("rRate : "+this.state.rate) ;
+        this.changeStarsColors() ; 
+    } 
     
     
     
@@ -42,11 +56,11 @@ let rate = 0 ;
    
     }
 
-    componentDidMount(){
+    changeStarsColors(){
         for(let i=1;i<=5;i++){
        
           
-            if( this.props.rate >= i){
+            if( this.state.rate >= i){
                 document.getElementById(`Star_${this.props.bookId}_${i}`).className = "ratingStar filledRatingStar";
             }else{
                 document.getElementById(`Star_${this.props.bookId}_${i}`).className = "ratingStar emptyRatingStar";
@@ -54,7 +68,10 @@ let rate = 0 ;
         
         
      }
-    //  alert("Item no"+this.props.rate+" Mounted") ;
+    }
+
+    componentDidMount(){
+        this.changeStarsColors() ; 
     }
 
 

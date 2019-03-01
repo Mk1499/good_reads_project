@@ -25,8 +25,10 @@ class BookID extends Component {
         rateNumber: "" , 
         category_id : "" ,
         auth_id : "" , 
-        book_img:""
+        book_img:"" ,
+        userRate:""
       } , 
+
       book_reviews : []
 
     }
@@ -55,6 +57,7 @@ class BookID extends Component {
         book.category_id = result.bookData.category_id._id  ; 
         book.auth_id = result.bookData.auth_id._id ;
         book.book_img = this.arrayBufferToBase64( result.bookData.book_img.data.data) ; 
+        book.userRate = result.user_rate ; 
         this.setState({ book });
       });
 
@@ -69,10 +72,15 @@ class BookID extends Component {
   }
 
 
-  changeRating = (bookId, state) => {
+ 
+  changeRating = (bookId, rate) => {
+    let item = this.state.book ;
     this.setState({
-      book: { ...this.state.book, shelve: state }
+      book: 
+         item.bookId === bookId ? { ...item, userRate: rate } : item
+      
     })
+   
   }
 
   changeShelve = (bookId, state) => {
@@ -88,6 +96,7 @@ class BookID extends Component {
 
   render(props) {
       console.log("img : " +this.state.book.book_img) ; 
+      console.log("rate book : "+this.state.book.userRate) ; 
     return (
       <div>
         <Navbar />
@@ -102,7 +111,8 @@ class BookID extends Component {
                   <div>
                     <DropDown bookId={this.props.book_id} shelveChanged={this.changeShelve} shelveState={this.state.book.shelve} />
                     <span className="Book_Card_Rate">Rate This Book :
-                {/* <RatingStars bookId={this.props.id} clickable={true} rate={this.state.book.rating} changeRate={this.props.changeRate} userId ={this.props.userId}/> */}
+          
+                <RatingStars bookId={this.props.book_id} clickable={true} rate={this.state.book.userRate} changeRate={this.changeRating} userId ={this.props.user_id}/>
                       `  </span>
                   </div>
                 </div>
@@ -120,6 +130,7 @@ class BookID extends Component {
                     </Link>
                     </h1>
                     <p style={{ color: '#445565' }}>   {this.state.book.rateNumber} Rates
+          
           <AvgRating avg={this.state.book.avgRating} clickable={false} bookId={this.state.bookId} /> </p>
                   </Container>
                   <Container fluid style={{ borderStyle: 'groove', borderRadius: '20px', height: '60%' }}>
